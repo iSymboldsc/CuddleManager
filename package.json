@@ -2,8 +2,9 @@
   "name": "cuddlemanager",
   "version": "1.0.0",
   "description": "A simple CLI mod manager for Subnautica, built to keep your mods tidy, updated, and working — all while you focus on exploring the depths.",
+  "main": "index.js",
   "bin": {
-    "cuddlemanager": "./bin/index.js"
+    "cuddlemanager": "index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
