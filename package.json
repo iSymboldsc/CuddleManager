@@ -1,10 +1,10 @@
 {
   "name": "cuddlemanager",
   "version": "1.0.0",
-  "description": "A simple CLI mod manager for Subnautica, built to keep your mods tidy, updated, and working — all while you focus on exploring the depths.",
+  "description": "A simple CLI mod manager for Subnautica, built to keep your mods tidy, updated, and working - all while you focus on exploring the depths.",
   "main": "index.js",
   "bin": {
-    "cuddlemanager": "index.js"
+    "cuddle": "./index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,5 +19,13 @@
     "nodejs"
   ],
   "author": "iSymbol",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "chalk-animation": "^2.0.3",
+    "commander": "^14.0.0",
+    "cuddlemanager": "file:",
+    "figlet": "^1.8.1"
+  },
+  "type": "module"
 }
