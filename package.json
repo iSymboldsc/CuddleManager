@@ -25,7 +25,9 @@
     "chalk-animation": "^2.0.3",
     "commander": "^14.0.0",
     "cuddlemanager": "file:",
-    "figlet": "^1.8.1"
+    "figlet": "^1.8.1",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
   },
   "type": "module"
 }

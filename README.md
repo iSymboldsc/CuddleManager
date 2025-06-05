@@ -18,3 +18,4 @@ After installing globally with `npm install -g`, you can run:
 
 ```bash
 cuddle <command>
+```
