@@ -1,12 +1,12 @@
-# CuddleManager
+# Subcuddle
 
-**CuddleManager** is a lightweight, terminal-based mod manager for Subnautica — built because Vortex felt too heavy and weird to use.
+**Subcuddle** is a lightweight, terminal-based mod manager for Subnautica — built because Vortex felt too heavy and weird to use.
 
 ---
 
 ## 🖥 Compatibility
 
-Right now, CuddleManager only works on **Windows**.
+Right now, Subcuddle only works on **Windows**.
 
 If it gets enough attention (or someone wants to help out), Linux/macOS support could happen in the future.
 
