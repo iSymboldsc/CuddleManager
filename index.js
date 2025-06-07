@@ -5,10 +5,13 @@ import { Command } from "commander";
 import path from 'path';
 import fs from 'fs';
 import chalk from 'chalk';
+import axios from 'axios';
 
 
 const program = new Command();
 const ModDirectories = path.join(process.env.appdata, "CuddleManager");
+const orange = chalk.hex('#FF8800');
+
 
 // Configuration for Commander
 program
@@ -16,6 +19,25 @@ program
   .description("Just a lighweight and simple mod manager, because I was tired of Vortex.")
   .version("1.0.0");
 
+program
+  .command('setup')
+  .description("Required to use CuddleManager.")
+  .option('-s, --silent', "Makes setup not log anything.")
+  .action((options) => {
+    if (!fs.existsSync('./config.json')) {
+    fs.writeFileSync('./config.json', '');
+    if (!options.silent) console.log(chalk.green("Config.json created."))
+  } else {
+    if (!options.silent) console.log(orange("config.json already exists."))
+  }
+
+    if (!fs.existsSync(ModDirectories)) {
+    fs.mkdirSync(ModDirectories);
+    if (!options.silent) console.log(chalk.green("CuddleManager created in AppData."))
+  } else {
+    if (!options.silent) console.log(orange("CuddleManager folder already exists."))
+  }
+  })
 // Select Command
 
 program
@@ -25,8 +47,7 @@ program
     if (directory == null) {
       // If the folder doesn't exist, create it
       if (!fs.existsSync(ModDirectories)) {
-        fs.mkdirSync(ModDirectories, { recursive: true }); // recursive true just in case
-        console.log("Created the mod directories folder.");
+        console.log(chalk.red("You have to run `cuddle setup`."))
       } else {
         // Folder exists, read the directories inside it
         const allEntries = fs.readdirSync(ModDirectories, { withFileTypes: true });
@@ -77,5 +98,20 @@ program
       console.log(`Directory does not exist: ${dirToDelete}`);
     }
   });
+
+program
+  .command("api <key>")
+  .option("-f, --force", "Force replace to the API key.")
+  .description("Needed to use the mod search/download.")
+  .action((key, options) => {
+    if (!fs.readFileSync("./config.json") || options.force) {
+      fs.writeFileSync('./config.json', JSON.stringify(key, null, 2));
+      console.log(chalk.green("API key saved."))
+    } else {
+      console.log(chalk.yellow("API key already saved. Do --force to replace."))
+    }
+  })
+
+
 program.parse();
   
